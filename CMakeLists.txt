@@ -14,7 +14,7 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 add_subdirectory(deps/glfw-3.4)			#window oppener
 add_subdirectory(deps/glad)				#opengl loader
-add_subdirectory(deps/glm)				#math
+add_subdirectory(deps/glm-1.01)				#math
 
 
 # Define MY_SOURCES to be a list of all the source files for my game 
