@@ -48,5 +48,4 @@ endif()
 target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
 
-target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE glm glfw 
-	glad)
+target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE glm glfw glad)
