@@ -12,12 +12,8 @@
 class Shader
 {
 public:
-	// shader ID
-	unsigned int ID;
-
 	// constructor
 	Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath = nullptr);
-
 
 	// this function activates the current shader
 	void use() const;
@@ -46,6 +42,9 @@ public:
 	void setMat4(const std::string& name, const glm::mat4& mat) const;
 
 private:
+	// shader ID
+	unsigned int ID;
+private: 
 	// this function check for shader compilation/linking errors
 	void checkCompileErrors(GLuint shader, std::string type, std::string path);
 };
