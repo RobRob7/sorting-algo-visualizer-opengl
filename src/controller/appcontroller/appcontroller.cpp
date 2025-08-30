@@ -22,7 +22,7 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	#endif
 
 	// WINDOW CREATION + CHECK
-	window_ = glfwCreateWindow(width_, height_, windowTitle_, NULL, NULL);
+	window_ = glfwCreateWindow(width_, height_, windowTitle_, nullptr, nullptr);
 	if (!window_)
 	{
 		glfwTerminate();
@@ -38,8 +38,6 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	// INITIALIZE GLAD + CHECK
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		glfwDestroyWindow(window_);
-		glfwTerminate();
 		throw std::runtime_error("GLAD initialization failure!");
 	} // end if
 
@@ -51,9 +49,20 @@ AppController::AppController(int width, int height, const char* windowTitle)
 			if (self && self->view_) self->view_->onResize(width, height);
 		});
 
-	view_ = std::make_unique<GLView>(width_, height_);
-	model_ = std::make_unique<TriangleModel>();
-	view_->upload(*model_);
+	//// enable for text rendering
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// triangle model/view
+	//model_ = std::make_unique<TriangleModel>();
+	//view_  = std::make_unique<GLView>(width_, height_);
+	//view_->upload(*model_);
+
+	// font model/view
+	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 50);
+	Shader fontShader("/font/shader.vert", "/font/shader.vert");
+	fontView_ = std::make_unique<FontView>(*fontModel_, fontShader);
+	fontView_->upload();
 } // end of constructor
 
 AppController::~AppController()
@@ -67,8 +76,19 @@ void AppController::run()
 {
 	while (!glfwWindowShouldClose(window_))
 	{
+		glm::mat4 projection = glm::ortho(
+			0.0f, static_cast<float>(width_),
+			0.0f, static_cast<float>(height_)
+		);
+
 		processInput();
+		// triangle render
 		view_->render();
+
+		// font render
+		fontView_->drawText("TESTING TEXT TEST", 25.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		fontView_->render(projection, glm::mat4(1.0f));
+
 		glfwSwapBuffers(window_);
 		glfwPollEvents();
 	} // end while

@@ -12,9 +12,10 @@ set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
-add_subdirectory(deps/glfw-3.4)			#window oppener
-add_subdirectory(deps/glad)				#opengl loader
-add_subdirectory(deps/glm-1.01)				#math
+add_subdirectory(deps/glfw-3.4)				# window opener
+add_subdirectory(deps/glad)				# opengl loader
+add_subdirectory(deps/glm-1.01)				# math
+add_subdirectory(deps/freetype-2.10.0)			# freetype
 
 
 # Define MY_SOURCES to be a list of all the source files for my game 
@@ -48,4 +49,4 @@ endif()
 target_include_directories("${CMAKE_PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
 
-target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE glm glfw glad)
+target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE glm glfw glad freetype)

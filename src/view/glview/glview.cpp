@@ -1,10 +1,9 @@
 #include "glview.h"
 
 //--- PUBLIC ---//
-// 
 GLView::GLView(int width, int height)
 	: width_(width), height_(height),
-	shader_(Shader("../../../res/shaders/shader.vert", "../../../res/shaders/shader.frag"))
+	shader_(Shader("../../../res/shader/shader.vert", "../../../res/shader/shader.frag"))
 {
 	createBuffers();
 	glViewport(0, 0, width_, height_);
@@ -64,7 +63,6 @@ void GLView::setClearColor(float r, float g, float b)
 } // end of setClearColor()
 
 //--- PRIVATE ---//
-// 
 void GLView::createBuffers()
 {
 	// temp

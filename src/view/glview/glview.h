@@ -5,7 +5,6 @@
 #include "../model/trianglemodel/trianglemodel.h"
 
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 class GLView
 {
@@ -28,8 +27,8 @@ private:
 	float clearG_ = 0.1f;
 	float clearB_ = 0.1f;
 
-	GLuint vao_ = 0;
-	GLuint vbo_ = 0;
+	unsigned int vao_ = 0;
+	unsigned int vbo_ = 0;
 
 	Shader shader_;
 };

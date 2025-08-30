@@ -20,11 +20,13 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 
 	try
 	{
+		// preliminary path to shaders
+		const std::string pathToShaders = "../../../res/shader";
 		// open shader files
 		problemFile = "VERTEX";
-		vertexShaderFile.open(vertexPath);
+		vertexShaderFile.open(pathToShaders + vertexPath);
 		problemFile = "FRAGMENT";
-		fragmentShaderFile.open(fragmentPath);
+		fragmentShaderFile.open(pathToShaders + fragmentPath);
 
 		// will contain file info as stringstrean for each shader
 		std::stringstream vertexShaderStream;
@@ -40,6 +42,7 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 
 		// convert stringstream to string
 		vertexCode = vertexShaderStream.str();
+		std::cout << vertexCode << "\n\n" << fragmentCode << "\n";
 		fragmentCode = fragmentShaderStream.str();
 
 		// check for geometry shader
