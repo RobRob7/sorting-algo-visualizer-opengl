@@ -3,7 +3,7 @@
 //--- PUBLIC ---//
 GLView::GLView(int width, int height)
 	: width_(width), height_(height),
-	shader_(Shader("../../../res/shader/shader.vert", "../../../res/shader/shader.frag"))
+	shader_(Shader("/triangle/shader.vert", "/triangle/shader.frag"))
 {
 	createBuffers();
 	glViewport(0, 0, width_, height_);

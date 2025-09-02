@@ -54,15 +54,15 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// triangle model/view
-	//model_ = std::make_unique<TriangleModel>();
-	//view_  = std::make_unique<GLView>(width_, height_);
-	//view_->upload(*model_);
+	model_ = std::make_unique<TriangleModel>();
+	view_  = std::make_unique<GLView>(width_, height_);
+	view_->upload(*model_);
 
 	// font model/view
-	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 50);
+	/*fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 50);
 	Shader fontShader("/font/shader.vert", "/font/shader.vert");
 	fontView_ = std::make_unique<FontView>(*fontModel_, fontShader);
-	fontView_->upload();
+	fontView_->upload();*/
 } // end of constructor
 
 AppController::~AppController()
@@ -86,8 +86,8 @@ void AppController::run()
 		view_->render();
 
 		// font render
-		fontView_->drawText("TESTING TEXT TEST", 25.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-		fontView_->render(projection, glm::mat4(1.0f));
+		/*fontView_->drawText("TESTING TEXT TEST", 25.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		fontView_->render(projection, glm::mat4(1.0f));*/
 
 		glfwSwapBuffers(window_);
 		glfwPollEvents();

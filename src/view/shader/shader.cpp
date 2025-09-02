@@ -42,8 +42,9 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, const char* geo
 
 		// convert stringstream to string
 		vertexCode = vertexShaderStream.str();
-		std::cout << vertexCode << "\n\n" << fragmentCode << "\n";
 		fragmentCode = fragmentShaderStream.str();
+
+		std::cout << vertexCode << "\n\n" << fragmentCode << "\n";
 
 		// check for geometry shader
 		if (geometryPath != nullptr)
