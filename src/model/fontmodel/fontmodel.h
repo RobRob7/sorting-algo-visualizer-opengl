@@ -12,14 +12,14 @@
 
 struct Character
 {
-	// bitmap (raw grayscale pixels)
-	std::vector<unsigned char> bitmap;
 	// size of glyph
 	glm::ivec2 size;
 	// offset from baseline to left/top of glyph
 	glm::ivec2 bearing;
 	// offset to advance to next glyph
 	unsigned int advance;
+	// bitmap (raw grayscale pixels)
+	std::vector<unsigned char> bitmap;
 };
 
 class FontModel
@@ -28,6 +28,8 @@ public:
 	FontModel(const std::string& filePath, unsigned int width, unsigned int height);
 	~FontModel();
 
+	const unsigned int getWidth() const;
+	const unsigned int getHeight() const;
 	const std::map<char, Character>& getCharacters() const;
 
 private:

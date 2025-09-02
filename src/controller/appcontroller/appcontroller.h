@@ -6,7 +6,6 @@
 #include "../../view/fontview/fontview.h"
 #include "../../model/fontmodel/fontmodel.h"
 
-#include <glm/gtc/matrix_transform.hpp>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 

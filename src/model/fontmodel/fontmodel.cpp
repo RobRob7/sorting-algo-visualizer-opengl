@@ -37,16 +37,15 @@ FontModel::FontModel(const std::string& fontFileName, unsigned int fontWidth, un
 
 		// now store character for later use
 		Character character;
-		character.size[0] = face_->glyph->bitmap.width;
-		character.size[1] = face_->glyph->bitmap.rows;
-		character.bearing[0] = face_->glyph->bitmap_left;
-		character.bearing[1] = face_->glyph->bitmap_top;
+		character.size = { face_->glyph->bitmap.width, face_->glyph->bitmap.rows };
+		character.bearing = { face_->glyph->bitmap_left, face_->glyph->bitmap_top };
 		character.advance = face_->glyph->advance.x;
 
 		character.bitmap.assign(
 			face_->glyph->bitmap.buffer,
-			face_->glyph->bitmap.buffer + character.size[0] * character.size[1]);
+			face_->glyph->bitmap.buffer + (character.size[0] * character.size[1]));
 
+		// insert into characters_
 		characters_.insert(std::pair<char, Character>(c, character));
 	} // end for
 } // end constructor

@@ -46,12 +46,16 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	glfwSetFramebufferSizeCallback(window_, [](GLFWwindow* window, int width, int height)
 		{
 			auto* self = static_cast<AppController*>(glfwGetWindowUserPointer(window));
-			if (self && self->view_) self->view_->onResize(width, height);
+			if (self)
+			{
+				self->width_ = width;
+				self->height_ = height;
+				if (self->view_)
+					self->view_->onResize(width, height);
+				if (self->fontView_)
+					self->fontView_->onResize(width, height);
+			}
 		});
-
-	//// enable for text rendering
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// triangle model/view
 	model_ = std::make_unique<TriangleModel>();
@@ -59,10 +63,9 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	view_->upload(*model_);
 
 	// font model/view
-	/*fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 50);
-	Shader fontShader("/font/shader.vert", "/font/shader.vert");
-	fontView_ = std::make_unique<FontView>(*fontModel_, fontShader);
-	fontView_->upload();*/
+	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 50);
+	fontView_ = std::make_unique<FontView>(*fontModel_, width_, height_);
+	fontView_->upload();
 } // end of constructor
 
 AppController::~AppController()
@@ -76,18 +79,18 @@ void AppController::run()
 {
 	while (!glfwWindowShouldClose(window_))
 	{
-		glm::mat4 projection = glm::ortho(
-			0.0f, static_cast<float>(width_),
-			0.0f, static_cast<float>(height_)
-		);
+		// set color to display after clear (state-setting function)
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		// clear the screen colors (state-using function)
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		processInput();
 		// triangle render
 		view_->render();
 
 		// font render
-		/*fontView_->drawText("TESTING TEXT TEST", 25.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-		fontView_->render(projection, glm::mat4(1.0f));*/
+		fontView_->render("TESTING TEXT TEST", 25.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		fontView_->render("Now you see me!", 25.0f, 300.0f, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
 
 		glfwSwapBuffers(window_);
 		glfwPollEvents();

@@ -9,7 +9,7 @@ class IView
 public:
 	virtual ~IView() = default;
 	virtual void upload() = 0;
-	virtual void render(const glm::mat4& projection, const glm::mat4& view) = 0;
+	//virtual void render(const glm::mat4& projection, const glm::mat4& view) = 0;
 };
 
 #endif

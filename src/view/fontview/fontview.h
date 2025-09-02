@@ -5,6 +5,7 @@
 #include "../model/fontmodel/fontmodel.h"
 #include "../shader/shader.h"
 
+#include <glm/gtc/matrix_transform.hpp>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
@@ -26,32 +27,27 @@ struct CharacterGL
 class FontView : public IView
 {
 public:
-	FontView(const FontModel& fontModel, Shader& fontShader);
+	FontView(const FontModel& fontModel, int windowWidth, int windowHeight);
 	~FontView();
 
 	void upload() override;
-	void render(const glm::mat4& projection, const glm::mat4& view) override;
-	void drawText(const std::string& text, float x, float y, float scale, glm::vec3 color);
+	void render(const std::string& text, float x, float y, float scale, glm::vec3 color);
+	void onResize(int width, int height);
 
 private:
+	// window width, height
+	unsigned int windowWidth_;
+	unsigned int windowHeight_;
 	// font model
 	const FontModel& fontModel_;
-	// font shader program
-	Shader& fontShader_;
+	// font shader
+	std::unique_ptr<Shader> fontShader_;
 	// map of characters to render
 	std::map<char, CharacterGL> characters_;
 	// font VAO
 	unsigned int vao_;
 	// font VBO
 	unsigned int vbo_;
-	
-	struct PendingText
-	{
-		std::string text;
-		float x, y, scale;
-		glm::vec3 color;
-	};
-	std::vector<PendingText> textQueue_;
 };
 
 #endif
