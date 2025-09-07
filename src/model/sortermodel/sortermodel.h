@@ -12,6 +12,7 @@ public:
 	const std::vector<float>& getVertices() const;
 	const std::vector<float>& getLinePositions() const;
 	const std::vector<float>& getLineScale() const;
+	void updateForResize(unsigned int scrWidth, unsigned int scrHeight);
 
 private:
 	std::vector<float> vertices_;

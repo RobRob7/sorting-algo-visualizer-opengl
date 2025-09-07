@@ -5,6 +5,8 @@
 #include "../../model/trianglemodel/trianglemodel.h"
 #include "../../view/fontview/fontview.h"
 #include "../../model/fontmodel/fontmodel.h"
+#include "../../view/sorterview/sorterview.h"
+#include "../../model/sortermodel/sortermodel.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -45,8 +47,10 @@ private:
 	// the font view
 	std::unique_ptr<FontView> fontView_;
 
-	//
-
+	// the sorter model
+	std::unique_ptr<SorterModel> sorterModel_;
+	// the sorter view
+	std::unique_ptr<SorterView> sorterView_;
 };
 
 #endif

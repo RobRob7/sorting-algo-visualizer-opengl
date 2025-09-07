@@ -24,7 +24,7 @@ void SorterView::upload()
 	glBindVertexArray(vao_);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo_);
 
-	glBufferData(GL_ARRAY_BUFFER, sorterModel_.getVertices().size() * sizeof(float), sorterModel_.getVertices().data(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sorterVertices_.size() * sizeof(float), sorterVertices_.data(), GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -32,9 +32,40 @@ void SorterView::upload()
 	glEnableVertexAttribArray(1);
 } // end of upload()
 
+void SorterView::render()
+{
+	// pvm calculation
+	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(windowWidth_), 0.0f, static_cast<float>(windowHeight_));
+	glm::mat4 view = glm::mat4(1.0f);
+	glm::mat4 model = glm::mat4(1.0f);
+	
+	glm::mat4 pv = projection * view;
+	glm::mat4 pvm = pv * model;
+
+	// use sorter shader
+	sorterShader_->use();
+	
+	// render lines
+	glBindVertexArray(vao_);
+	for (size_t i = 0; i < sorterLinePositions_.size(); ++i)
+	{
+		glm::mat4 linesModel = glm::mat4(1.0f);
+		linesModel = glm::translate(linesModel, glm::vec3(sorterLinePositions_[i], 0.0f, 0.0f));
+		linesModel = glm::scale(linesModel, glm::vec3(1.0f, sorterLineScale_[i], 1.0f));
+		glm::mat4 linePVM = pv * linesModel;
+		sorterShader_->setMat4("pvm", linePVM);
+		glDrawArrays(GL_LINES, 0, 2);
+	} // end for
+
+	glBindVertexArray(0);
+} // end of render()
+
 void SorterView::onResize(int width, int height)
 {
+	// set new window sizes
 	windowWidth_ = width;
 	windowHeight_ = height;
-	glViewport(0, 0, windowWidth_, windowHeight_);
+
+	// tell model to recompute sizes
+	const_cast<SorterModel&>(sorterModel_).updateForResize(width, height);
 } // end of onResize()

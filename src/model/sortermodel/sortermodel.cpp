@@ -7,8 +7,8 @@ SorterModel::SorterModel(unsigned int numOfLines, unsigned int scrWidth, unsigne
 	vertices_ =
 	{
 		// position							// color
-		0.0f, 0.0f, 0.0f,					0.0f, 0.75f, 0.75f,
-		0.0f, (float)scrHeight, 0.0f,		0.75f, 0.0f, 0.75f
+		0.0f, 0.0f, 0.0f,					0.0f, 0.0f, 1.0f,
+		0.0f, (float)scrHeight, 0.0f,		1.0f, 0.0f, 0.0f
 	};
 
 	// set new vector size
@@ -49,3 +49,13 @@ const std::vector<float>& SorterModel::getLineScale() const
 {
 	return lineScale_;
 } // end of getLineScale()
+
+void SorterModel::updateForResize(unsigned int scrWidth, unsigned int scrHeight)
+{
+	// horizontal spacing between the lines
+	float horizontalSpacing = (float)scrWidth / linePositions_.size();
+	for (size_t i = 0; i < linePositions_.size(); ++i)
+	{
+		linePositions_[i] = i * horizontalSpacing;
+	} // end for
+} // end of updateForResize()

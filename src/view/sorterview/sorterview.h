@@ -6,6 +6,9 @@
 #include "../shader/shader.h"
 
 #include <glad/glad.h>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/glm.hpp>
 #include <vector>
 
 class SorterView : public IView
@@ -14,7 +17,11 @@ public:
 	SorterView(const SorterModel& sorterModel, int windowWidth, int windowHeight);
 	~SorterView();
 
+	// upload vao, vbo
 	void upload() override;
+	// render the lines
+	void render();
+	//
 	void onResize(int width, int height);
 
 private:
@@ -23,6 +30,12 @@ private:
 	unsigned int windowHeight_;
 	// sorter model
 	const SorterModel& sorterModel_;
+	// sorter model vertices
+	const std::vector<float>& sorterVertices_ = sorterModel_.getVertices();
+	// sorter model line positions
+	const std::vector<float>& sorterLinePositions_ = sorterModel_.getLinePositions();
+	// sorter model line scale
+	const std::vector<float>& sorterLineScale_ = sorterModel_.getLineScale();
 	// sorter line shader
 	std::unique_ptr<Shader> sorterShader_;
 	// sorter VAO

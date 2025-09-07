@@ -133,7 +133,7 @@ void FontView::render(const std::string& text, float x, float y, float scale, gl
 
 void FontView::onResize(int width, int height)
 {
+	// set new window sizes
 	windowWidth_ = width;
 	windowHeight_ = height;
-	glViewport(0, 0, windowWidth_, windowHeight_);
 } // end of onResize()

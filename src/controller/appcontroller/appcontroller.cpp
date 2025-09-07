@@ -50,10 +50,13 @@ AppController::AppController(int width, int height, const char* windowTitle)
 			{
 				self->width_ = width;
 				self->height_ = height;
+				glViewport(0, 0, width, height);
 				if (self->view_)
 					self->view_->onResize(width, height);
 				if (self->fontView_)
 					self->fontView_->onResize(width, height);
+				if (self->sorterView_)
+					self->sorterView_->onResize(width, height);
 			}
 		});
 
@@ -66,6 +69,12 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 75);
 	fontView_ = std::make_unique<FontView>(*fontModel_, width_, height_);
 	fontView_->upload();
+
+	// sorter model/view
+	const unsigned int numberOfLines = 700;
+	sorterModel_ = std::make_unique<SorterModel>(numberOfLines, width_, height_);
+	sorterView_ = std::make_unique<SorterView>(*sorterModel_, width_, height_);
+	sorterView_->upload();
 } // end of constructor
 
 AppController::~AppController()
@@ -86,10 +95,13 @@ void AppController::run()
 
 		processInput();
 		// triangle render
-		view_->render();
+		//view_->render();
 
 		// font render
 		fontView_->render("TESTING TEXT TEST", 0.0f, 0.0f , 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+
+		// sorter render
+		sorterView_->render();
 
 		glfwSwapBuffers(window_);
 		glfwPollEvents();
