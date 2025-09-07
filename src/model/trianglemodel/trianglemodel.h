@@ -11,7 +11,8 @@ public:
 
 private:
 	// vertices + color data of triangle
-	const std::vector<float> vertices_ = {
+	const std::vector<float> vertices_ =
+	{
 		//	x      y        r     g     b
 			0.0f,  0.5f,    1.0f, 0.0f, 0.0f, // top (red)
 		   -0.5f, -0.5f,    0.0f, 1.0f, 0.0f, // left (green)

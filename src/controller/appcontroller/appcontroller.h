@@ -44,6 +44,9 @@ private:
 	std::unique_ptr<FontModel> fontModel_;
 	// the font view
 	std::unique_ptr<FontView> fontView_;
+
+	//
+
 };
 
 #endif

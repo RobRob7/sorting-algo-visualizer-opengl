@@ -63,7 +63,7 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	view_->upload(*model_);
 
 	// font model/view
-	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 50);
+	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 75);
 	fontView_ = std::make_unique<FontView>(*fontModel_, width_, height_);
 	fontView_->upload();
 } // end of constructor
@@ -89,8 +89,7 @@ void AppController::run()
 		view_->render();
 
 		// font render
-		fontView_->render("TESTING TEXT TEST", 25.0f, 25.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-		fontView_->render("Now you see me!", 25.0f, 300.0f, 1.0f, glm::vec3(1.0f, 1.0f, 0.0f));
+		fontView_->render("TESTING TEXT TEST", 0.0f, 0.0f , 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
 
 		glfwSwapBuffers(window_);
 		glfwPollEvents();
@@ -104,5 +103,26 @@ void AppController::processInput()
 	if (glfwGetKey(window_, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(window_, true);
+	}
+	
+	if (glfwGetKey(window_, GLFW_KEY_1) == GLFW_PRESS)
+	{
+		std::cout << "#1\n";
+	}
+	if (glfwGetKey(window_, GLFW_KEY_2) == GLFW_PRESS)
+	{
+		std::cout << "#2\n";
+	}
+	if (glfwGetKey(window_, GLFW_KEY_3) == GLFW_PRESS)
+	{
+		std::cout << "#3\n";
+	}
+	if (glfwGetKey(window_, GLFW_KEY_4) == GLFW_PRESS)
+	{
+		std::cout << "#4\n";
+	}
+	if (glfwGetKey(window_, GLFW_KEY_5) == GLFW_PRESS)
+	{
+		std::cout << "#5\n";
 	}
 } // end of processInput()
