@@ -11,7 +11,7 @@ Requirements
 > - Download and install [CMake](https://cmake.org/download/)(at least v3.20).
 
 <h2>
-<img src="https://cdn-icons-png.freepik.com/512/8964/8964273.png" height="35",align = "center">
+<img src="https://cdn-icons-png.freepik.com/512/8964/8964273.png" height="30",align = "center">
 Build
 </h2>
 
@@ -28,7 +28,7 @@ cmake ..
 cmake --build . --config Release
 ```
 <h2>
-<img src="https://em-content.zobj.net/source/microsoft-teams/337/hammer-and-wrench_1f6e0-fe0f.png" height="35",align = "center">
+<img src="https://em-content.zobj.net/source/microsoft-teams/337/hammer-and-wrench_1f6e0-fe0f.png" height="30",align = "center">
 Run
 </h2>
 
@@ -38,7 +38,7 @@ Release/algorithm-visualizer.exe
 
 
 <h2>
-<img src="https://em-content.zobj.net/source/microsoft-3D-fluent/406/package_1f4e6.png" height="35",align = "center">
+<img src="https://em-content.zobj.net/source/microsoft-3D-fluent/406/package_1f4e6.png" height="30",align = "center">
 Dependencies
 </h2>
 
@@ -52,7 +52,7 @@ Libraries already provided, the following are used:
 
 
 <h2>
-<img src="https://img.favpng.com/19/7/16/vector-graphics-computer-icons-document-illustration-computer-file-png-favpng-xJ7warkhEDQsS0DxyYzeddGNq.jpg" height="35",align = "center">
+<img src="https://img.favpng.com/19/7/16/vector-graphics-computer-icons-document-illustration-computer-file-png-favpng-xJ7warkhEDQsS0DxyYzeddGNq.jpg" height="30",align = "center">
 Project Structure
 </h2>
 
