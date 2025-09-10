@@ -2,7 +2,7 @@
 Tool that provides a visualization of sorting algorithms using OpenGL 3.3 Core, C++17. For use with Windows only.
 
 <h2>
-<img src="https://previews.123rf.com/images/asmati/asmati1602/asmati160202823/52174375-exclamation-mark-sign-flat-style-icon-on-transparent-background.jpg" height="30" align="center">
+<img src="https://lh4.googleusercontent.com/proxy/4_Zan5D7FOYcviw14ecpCpx8Tvq-ii1DoLIe15O2eDy9INbz2mhP-27Z3HCWby3EaQned-UF-1n4zFzbkSEFt9p7sOQUnsX-q_GyjI4C1-bSIVXTG0z0dugD" height="30" align="center">
 Requirements
 </h2>
 
@@ -11,7 +11,7 @@ Requirements
 > - Download and install [CMake](https://cmake.org/download/)(at least v3.20).
 
 <h2>
-<img src="https://cdn-icons-png.freepik.com/512/8964/8964273.png" height="30",align = "center">
+<img src="https://em-content.zobj.net/source/microsoft-teams/337/hammer-and-wrench_1f6e0-fe0f.png" height="30",align = "center">
 Build
 </h2>
 
@@ -28,7 +28,7 @@ cmake ..
 cmake --build . --config Release
 ```
 <h2>
-<img src="https://em-content.zobj.net/source/microsoft-teams/337/hammer-and-wrench_1f6e0-fe0f.png" height="30",align = "center">
+<img src="https://cdn-icons-png.freepik.com/512/8964/8964273.png" height="30",align = "center">
 Run
 </h2>
 
@@ -52,7 +52,7 @@ Libraries already provided, the following are used:
 
 
 <h2>
-<img src="https://img.favpng.com/19/7/16/vector-graphics-computer-icons-document-illustration-computer-file-png-favpng-xJ7warkhEDQsS0DxyYzeddGNq.jpg" height="30",align = "center">
+<img src="https://www.traptct.com/wp-content/uploads/2020/04/file-folder-png-1.png" height="30",align = "center">
 Project Structure
 </h2>
 
