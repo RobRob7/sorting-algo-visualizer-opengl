@@ -28,8 +28,6 @@ public:
 	FontModel(const std::string& filePath, unsigned int width, unsigned int height);
 	~FontModel();
 
-	const unsigned int getWidth() const;
-	const unsigned int getHeight() const;
 	const std::map<char, Character>& getCharacters() const;
 
 private:
