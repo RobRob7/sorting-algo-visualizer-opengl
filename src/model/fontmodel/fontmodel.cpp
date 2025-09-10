@@ -15,7 +15,7 @@ FontModel::FontModel(const std::string& fontFileName, unsigned int fontWidth, un
 	}
 
 	// load font
-	std::string fullPath = "../../../res/font/" + fontFileName;
+	std::string fullPath = std::string(RESOURCES_PATH) + "font/" + fontFileName;
 	if (FT_New_Face(ft_, fullPath.c_str(), 0, &face_))
 	{
 		std::cerr << "ERROR::FREETYPE: Failed to load font!";
