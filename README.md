@@ -33,7 +33,8 @@ Run
 </h2>
 
 ```
-Release/algorithm-visualizer.exe
+cd Release
+algorithm-visualizer.exe
 ```
 
 
