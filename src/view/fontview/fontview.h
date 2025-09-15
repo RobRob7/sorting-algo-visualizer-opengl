@@ -30,9 +30,12 @@ public:
 	FontView(const FontModel& fontModel, int windowWidth, int windowHeight);
 	~FontView();
 
+	// upload vao, vbo
 	void upload() override;
+	// render the font
 	void render(const std::string& text, float x, float y, float scale, glm::vec3 color);
-	void onResize(int width, int height);
+	// update new window width, height
+	void onResize(int width, int height) override;
 
 private:
 	// window width, height

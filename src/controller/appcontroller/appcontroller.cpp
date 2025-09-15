@@ -51,19 +51,12 @@ AppController::AppController(int width, int height, const char* windowTitle)
 				self->width_ = width;
 				self->height_ = height;
 				glViewport(0, 0, width, height);
-				if (self->view_)
-					self->view_->onResize(width, height);
 				if (self->fontView_)
 					self->fontView_->onResize(width, height);
 				if (self->sorterView_)
 					self->sorterView_->onResize(width, height);
 			}
 		});
-
-	// triangle model/view
-	model_ = std::make_unique<TriangleModel>();
-	view_  = std::make_unique<GLView>(width_, height_);
-	view_->upload(*model_);
 
 	// font model/view
 	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 75);
@@ -94,8 +87,6 @@ void AppController::run()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		processInput();
-		// triangle render
-		//view_->render();
 
 		// font render
 		fontView_->render("TESTING TEXT TEST", 0.0f, 0.0f , 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));

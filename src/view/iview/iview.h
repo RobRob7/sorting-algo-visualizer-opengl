@@ -1,15 +1,13 @@
 #ifndef IVIEW_H
 #define IVIEW_H
 
-#include <glm/glm.hpp>
-
-// pure abstract view interface
+// pure abstract IView interface
 class IView
 {
 public:
 	virtual ~IView() = default;
 	virtual void upload() = 0;
-	//virtual void render(const glm::mat4& projection, const glm::mat4& view) = 0;
+	virtual void onResize(int width, int height) = 0;
 };
 
 #endif

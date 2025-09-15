@@ -21,8 +21,8 @@ public:
 	void upload() override;
 	// render the lines
 	void render();
-	//
-	void onResize(int width, int height);
+	// update new window width, height
+	void onResize(int width, int height) override;
 
 private:
 	// window width, height
