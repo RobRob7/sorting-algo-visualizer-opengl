@@ -8,7 +8,7 @@ Requirements
 
 > - [Download](https://visualstudio.microsoft.com/vs/community/) Visual Studio 2022 Community Edition.
 > -- Install workloads: *Desktop development with C++*.
-> - Download and install [CMake](https://cmake.org/download/)(at least v3.20).
+> - [Download](https://cmake.org/download/) and install CMake (>= v3.20).
 
 <h2>
 <img src="https://em-content.zobj.net/source/microsoft-teams/337/hammer-and-wrench_1f6e0-fe0f.png" height="30",align = "center">
@@ -34,7 +34,7 @@ Run
 
 ```
 cd Release
-algorithm-visualizer.exe
+/algorithm-visualizer.exe
 ```
 
 
@@ -57,13 +57,31 @@ Libraries already provided, the following are used:
 Project Structure
 </h2>
 
-- This project follows the MVC design pattern. Project layout:
-> src
-|-> model/
-|-> view/
-|-> controller/
-|-> main.cpp
-res
-|-> font/
-|-> shader/
+This project follows the MVC design pattern. Project layout:
+- **src/**
+  - **model/**
+    - **fontmodel/** → Font rendering data
+        - `fontmodel.h`
+        - `fontmodel.cpp`
+    - **sortermodel/** → Sorting algorithm rendering data
+        - `sortermodel.h`
+        - `sortermodel.cpp`
+  - **view/**
+    - **fontview/** → Font rendering OpenGL
+        - `fontview.h`
+        - `fontview.cpp`
+    - **sorterview/** → Sorting algorithm rendering OpenGL
+        - `sorterview.h`
+        - `sorterview.cpp`
+    - **shader/** → Shader program creation
+        - `shader.h`
+        - `shader.cpp`
+- **controller/**
+    - **appcontroller/** → Window control
+      - `appcontroller.h`
+      - `appcontroller.cpp`
+- **res/**
+  - **font/** → Font for text rendering
+  - **shader/** → Shaders
+- **deps/** → Dependency files
 
