@@ -4,6 +4,8 @@
 #include "../../model/fontmodel/fontmodel.h"
 #include "../../view/fontview/fontview.h"
 #include "../../model/sortermodel/sortermodel.h"
+#include "../../model/sortermodel/sortingalgo/bubblesort.h"
+#include "../../model/sortermodel/sortingalgo/insertionsort.h"
 #include "../../view/sorterview/sorterview.h"
 
 #include <glad/glad.h>
@@ -44,6 +46,9 @@ private:
 	std::unique_ptr<SorterModel> sorterModel_;
 	// the sorter view
 	std::unique_ptr<SorterView> sorterView_;
+
+	double currTime = 0.0;
+	std::string algoText_ = "BUBBLE SORT";
 };
 
 #endif
