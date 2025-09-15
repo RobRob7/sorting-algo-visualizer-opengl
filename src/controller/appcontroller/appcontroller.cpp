@@ -140,6 +140,7 @@ void AppController::processInput()
 		sorterModel_->setSortingAlgorithm(std::make_unique<InsertionSort>());
 		algoText_ = "INSERTION SORT";
 	}
+	// press '3' key
 	if (glfwGetKey(window_, GLFW_KEY_3) == GLFW_PRESS)
 	{
 		std::cout << "#3\n";
