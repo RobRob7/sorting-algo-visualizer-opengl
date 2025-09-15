@@ -64,10 +64,12 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	fontView_->upload();
 
 	// sorter model/view
-	const unsigned int numberOfLines = 700;
+	const unsigned int numberOfLines = 500;
 	sorterModel_ = std::make_unique<SorterModel>(numberOfLines, width_, height_);
 	sorterView_ = std::make_unique<SorterView>(*sorterModel_, width_, height_);
 	sorterView_->upload();
+
+	sorterModel_->setSortingAlgorithm(std::make_unique<InsertionSort>());
 } // end of constructor
 
 AppController::~AppController()
@@ -79,6 +81,7 @@ AppController::~AppController()
 
 void AppController::run()
 {
+	unsigned int steps = 100;
 	while (!glfwWindowShouldClose(window_))
 	{
 		// set color to display after clear (state-setting function)
@@ -86,13 +89,26 @@ void AppController::run()
 		// clear the screen colors (state-using function)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		// process and handle input from user
 		processInput();
 
-		// font render
-		fontView_->render("TESTING TEXT TEST", 0.0f, 0.0f , 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		// check for sorting done
+		if (sorterModel_->step(steps))
+		{
+			currTime = currTime;
+			fontView_->render("DONE!", 0.0f, height_ / 2.0f - 75.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		}
+		else
+		{
+			currTime = glfwGetTime();
+		}
 
 		// sorter render
 		sorterView_->render();
+
+		// font render
+		fontView_->render("Time: " + std::to_string(currTime), 0.0f, height_ / 2.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		fontView_->render(algoText_, width_ / 2.0f, height_ - 100.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
 
 		glfwSwapBuffers(window_);
 		glfwPollEvents();
@@ -108,13 +124,21 @@ void AppController::processInput()
 		glfwSetWindowShouldClose(window_, true);
 	}
 	
+	// press '1' key
 	if (glfwGetKey(window_, GLFW_KEY_1) == GLFW_PRESS)
 	{
-		std::cout << "#1\n";
+		glfwSetTime(0.0);
+		std::cout << "BUBBLE SORT\n";
+		sorterModel_->setSortingAlgorithm(std::make_unique<BubbleSort>());
+		algoText_ = "BUBBLE SORT";
 	}
+	// press '2' key
 	if (glfwGetKey(window_, GLFW_KEY_2) == GLFW_PRESS)
 	{
-		std::cout << "#2\n";
+		glfwSetTime(0.0);
+		std::cout << "INSERTION SORT\n";
+		sorterModel_->setSortingAlgorithm(std::make_unique<InsertionSort>());
+		algoText_ = "INSERTION SORT";
 	}
 	if (glfwGetKey(window_, GLFW_KEY_3) == GLFW_PRESS)
 	{

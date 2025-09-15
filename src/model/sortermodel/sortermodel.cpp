@@ -33,6 +33,9 @@ SorterModel::SorterModel(unsigned int numOfLines, unsigned int scrWidth, unsigne
 	{
 		lineScale_[i] = 1.0f - distInt(gen) * verticalSpacing;
 	} // end for
+
+	// keep copy of original lineScale
+	initialLineScale_ = lineScale_;
 } // end of constructor
 
 const std::vector<float>& SorterModel::getVertices() const
@@ -59,3 +62,48 @@ void SorterModel::updateForResize(unsigned int scrWidth, unsigned int scrHeight)
 		linePositions_[i] = i * horizontalSpacing;
 	} // end for
 } // end of updateForResize()
+
+void SorterModel::setSortingAlgorithm(std::unique_ptr<ISorterModel> algo)
+{
+	algo_ = std::move(algo);
+	// if existing algorithm running
+	if (algo_)
+	{
+		// set line scale to original positions, attach
+		lineScale_ = initialLineScale_;
+		algo_->attach(&lineScale_);
+
+		// reset step counters
+		algo_->reset();
+	}
+} // end of setSortingAlgorithm()
+
+void SorterModel::resetSortingAlgorithm()
+{
+	// if existing algorithm running
+	if (algo_)
+	{
+		// reset sorting instance
+		algo_->reset();
+	}
+} // end of resetSortingAlgorithm()
+
+bool SorterModel::step(int steps)
+{
+	// check for done sorting
+	if (!algo_) return true;
+
+	// bool for sorting done
+	bool done = false;
+
+	// compute steps each frame
+	for (int s = 0; s < steps; ++s)
+	{
+		// check for done status
+		done = algo_->step();
+
+		// if done sorting, break
+		if (done) break;
+	} // end for
+	return done;
+} // end of step()
