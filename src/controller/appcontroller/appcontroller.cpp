@@ -69,7 +69,8 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	sorterView_ = std::make_unique<SorterView>(*sorterModel_, width_, height_);
 	sorterView_->upload();
 
-	sorterModel_->setSortingAlgorithm(std::make_unique<InsertionSort>());
+	// set bubble sort as initial algorithm
+	sorterModel_->setSortingAlgorithm(std::make_unique<BubbleSort>());
 } // end of constructor
 
 AppController::~AppController()
@@ -81,6 +82,7 @@ AppController::~AppController()
 
 void AppController::run()
 {
+	// number of steps per frame for animation
 	unsigned int steps = 100;
 	while (!glfwWindowShouldClose(window_))
 	{
@@ -143,7 +145,10 @@ void AppController::processInput()
 	// press '3' key
 	if (glfwGetKey(window_, GLFW_KEY_3) == GLFW_PRESS)
 	{
-		std::cout << "#3\n";
+		glfwSetTime(0.0);
+		std::cout << "SELECTION SORT\n";
+		sorterModel_->setSortingAlgorithm(std::make_unique<SelectionSort>());
+		algoText_ = "SELECTION SORT";
 	}
 	if (glfwGetKey(window_, GLFW_KEY_4) == GLFW_PRESS)
 	{

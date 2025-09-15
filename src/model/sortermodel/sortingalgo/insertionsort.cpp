@@ -36,6 +36,6 @@ bool InsertionSort::step()
 
 void InsertionSort::reset()
 {
-    i_ = 0;
-    j_ = 0;
+    i_ = 1;
+    j_ = i_;
 } // end of reset()
