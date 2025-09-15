@@ -1,9 +1,9 @@
-#ifndef INSERTIONSORT_H
-#define INSERTIONSORT_H
+#ifndef SELECTIONSORT_H
+#define SELECTIONSORT_H
 
 #include "../isortermodel/isortermodel.h"
 
-class InsertionSort : public ISorterModel
+class SelectionSort : public ISorterModel
 {
 public:
     // set line values when algorithm set, begin anew
@@ -20,7 +20,9 @@ private:
     // value of lines
     std::vector<float>* vals_ = nullptr;
     // algorithm step counters
-    size_t i_ = 1, j_ = 1;
+    size_t i_ = 0, j_ = 1;
+    // minimum element index
+    size_t minIndex_ = 0;
 };
 
 #endif

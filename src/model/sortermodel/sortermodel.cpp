@@ -65,6 +65,7 @@ void SorterModel::updateForResize(unsigned int scrWidth, unsigned int scrHeight)
 
 void SorterModel::setSortingAlgorithm(std::unique_ptr<ISorterModel> algo)
 {
+	// efficient move
 	algo_ = std::move(algo);
 	// if existing algorithm running
 	if (algo_)

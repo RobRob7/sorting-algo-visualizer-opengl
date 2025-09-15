@@ -6,6 +6,7 @@
 #include "../../model/sortermodel/sortermodel.h"
 #include "../../model/sortermodel/sortingalgo/bubblesort.h"
 #include "../../model/sortermodel/sortingalgo/insertionsort.h"
+#include "../../model/sortermodel/sortingalgo/selectionsort.h"
 #include "../../view/sorterview/sorterview.h"
 
 #include <glad/glad.h>
@@ -47,7 +48,9 @@ private:
 	// the sorter view
 	std::unique_ptr<SorterView> sorterView_;
 
+	// current time tracker
 	double currTime = 0.0;
+	// default algorithm text
 	std::string algoText_ = "BUBBLE SORT";
 };
 
