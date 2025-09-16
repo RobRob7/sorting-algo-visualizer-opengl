@@ -12,27 +12,36 @@ bool SelectionSort::step()
     // check for sorting done
     if (!vals_ || vals_->empty()) return true;
 
-    if (i_ < vals_->size() - 1) {
-        if (j_ < vals_->size()) {
-            // Compare current element to current minimum
-            if ((*vals_)[j_] < (*vals_)[minIndex_]) {
+    // outer loop index (outer pass)
+    if (i_ < vals_->size() - 1)
+    {
+        // check unsorted portion of vector
+        if (j_ < vals_->size())
+        {
+            // compare current element to current minimum
+            if ((*vals_)[j_] < (*vals_)[minIndex_])
+            {
+                // update min index
                 minIndex_ = j_;
             }
             ++j_;
         }
-        else {
-            // Done scanning unsorted part, swap min into place
+        // finished scan of unsorted portion
+        else
+        {
+            // swap min into place
             std::swap((*vals_)[i_], (*vals_)[minIndex_]);
 
-            // Move to next pass
+            // move to next pass
             ++i_;
             j_ = i_ + 1;
             minIndex_ = i_;
         }
-        return false; // still sorting
+        // sorting still ongoing
+        return false;
     }
-
-    return true; // all sorted
+    // sorting done
+    return true;
 } // end of step()
 
 void SelectionSort::reset()
