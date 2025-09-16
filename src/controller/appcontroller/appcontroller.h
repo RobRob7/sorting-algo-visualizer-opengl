@@ -7,6 +7,7 @@
 #include "../../model/sortermodel/sortingalgo/bubblesort.h"
 #include "../../model/sortermodel/sortingalgo/insertionsort.h"
 #include "../../model/sortermodel/sortingalgo/selectionsort.h"
+#include "../../model/sortermodel/sortingalgo/quicksort.h"
 #include "../../view/sorterview/sorterview.h"
 
 #include <glad/glad.h>
