@@ -64,7 +64,7 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	fontView_->upload();
 
 	// sorter model/view
-	const unsigned int numberOfLines = 500;
+	const unsigned int numberOfLines = 1000;
 	sorterModel_ = std::make_unique<SorterModel>(numberOfLines, width_, height_);
 	sorterView_ = std::make_unique<SorterView>(*sorterModel_, width_, height_);
 	sorterView_->upload();
@@ -84,21 +84,34 @@ void AppController::run()
 {
 	// number of steps per frame for animation
 	unsigned int steps = 50;
+	// color of time font
+	glm::vec3 timeFontColor{ 1.0f, 0.0f, 0.0f };
+	// algo title font color
+	glm::vec3 algoFontColor{ 0.0f, 0.0f, 1.0f };
+	// tip font color
+	glm::vec3 tipFontColor{ 1.0f, 1.0f, 1.0f };
 	while (!glfwWindowShouldClose(window_))
 	{
 		// set color to display after clear (state-setting function)
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		// clear the screen colors (state-using function)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// process and handle input from user
 		processInput();
 
+		// render selection tips
+		fontView_->render("Select Algorithm Using Key (ESC to end):", 0.0f, height_ - 100.0f, 1.0f, tipFontColor);
+		fontView_->render("1 - Bubble Sort", 0.0f, height_ - 175.0f, 1.0f, tipFontColor);
+		fontView_->render("2 - Insertion Sort", 0.0f, height_ - 250.0f, 1.0f, tipFontColor);
+		fontView_->render("3 - Selection Sort", 0.0f, height_ - 325.0f, 1.0f, tipFontColor);
+		fontView_->render("4 - Quick Sort", 0.0f, height_ - 400.0f, 1.0f, tipFontColor);
+
 		// check for sorting done
 		if (sorterModel_->step(steps))
 		{
 			currTime = currTime;
-			fontView_->render("DONE!", 0.0f, height_ / 2.0f - 75.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+			fontView_->render("DONE!", 0.0f, height_ / 2.0f - 75.0f, 1.0f, timeFontColor);
 		}
 		else
 		{
@@ -108,9 +121,9 @@ void AppController::run()
 		// sorter render
 		sorterView_->render();
 
-		// font render
-		fontView_->render("Time: " + std::to_string(currTime), 0.0f, height_ / 2.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-		fontView_->render(algoText_, width_ / 2.0f, height_ - 100.0f, 1.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+		// font render (time counter and algo selected)
+		fontView_->render("Time: " + std::to_string(currTime), 0.0f, height_ / 2.0f, 1.0f, timeFontColor);
+		fontView_->render(algoText_ + " (N=" + std::to_string(sorterModel_->getLinePositions().size()) + ")", width_ / 2.0f, height_ - 100.0f, 1.0f, algoFontColor);
 
 		glfwSwapBuffers(window_);
 		glfwPollEvents();

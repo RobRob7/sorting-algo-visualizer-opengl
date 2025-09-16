@@ -8,7 +8,7 @@ SorterModel::SorterModel(unsigned int numOfLines, unsigned int scrWidth, unsigne
 	{
 		// position							// color
 		0.0f, 0.0f, 0.0f,					0.0f, 0.0f, 1.0f,
-		0.0f, (float)scrHeight, 0.0f,		1.0f, 0.0f, 0.0f
+		0.0f, (float)scrHeight, 0.0f,		1.0f, 1.0f, 1.0f
 	};
 
 	// set new vector size
