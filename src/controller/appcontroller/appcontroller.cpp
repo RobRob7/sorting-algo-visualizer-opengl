@@ -16,10 +16,6 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	// specify OpenGL core-profile
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	// apple device dependent
-	#ifdef __APPLE__
-		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-	#endif
 
 	// WINDOW CREATION + CHECK
 	window_ = glfwCreateWindow(width_, height_, windowTitle_, nullptr, nullptr);
