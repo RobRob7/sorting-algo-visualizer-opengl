@@ -1,7 +1,6 @@
 #ifndef SORTERVIEW_H
 #define SORTERVIEW_H
 
-#include "../iview/iview.h"
 #include "../model/sortermodel/sortermodel.h"
 #include "../shader/shader.h"
 
@@ -11,18 +10,18 @@
 #include <glm/glm.hpp>
 #include <vector>
 
-class SorterView : public IView
+class SorterView
 {
 public:
 	SorterView(const SorterModel& sorterModel, int windowWidth, int windowHeight);
 	~SorterView();
 
 	// upload vao, vbo
-	void upload() override;
+	void upload();
 	// render the lines
 	void render();
 	// update new window width, height
-	void onResize(int width, int height) override;
+	void onResize(int width, int height);
 
 private:
 	// window width, height

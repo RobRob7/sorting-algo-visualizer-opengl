@@ -1,7 +1,6 @@
 #ifndef FONTVIEW_H
 #define FONTVIEW_H
 
-#include "../iview/iview.h"
 #include "../model/fontmodel/fontmodel.h"
 #include "../shader/shader.h"
 
@@ -24,18 +23,18 @@ struct CharacterGL
 	unsigned int advance;
 };
 
-class FontView : public IView
+class FontView
 {
 public:
 	FontView(const FontModel& fontModel, int windowWidth, int windowHeight);
 	~FontView();
 
 	// upload vao, vbo
-	void upload() override;
+	void upload();
 	// render the font
 	void render(const std::string& text, float x, float y, float scale, glm::vec3 color);
 	// update new window width, height
-	void onResize(int width, int height) override;
+	void onResize(int width, int height);
 
 private:
 	// window width, height
