@@ -57,7 +57,8 @@ AppController::AppController(int width, int height, const char* windowTitle)
 		});
 
 	// font model/view
-	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, 75);
+	const unsigned int fontSize = 75;
+	fontModel_ = std::make_unique<FontModel>("arial.ttf", 0, fontSize);
 	fontView_ = std::make_unique<FontView>(*fontModel_, width_, height_);
 	fontView_->upload();
 
@@ -108,7 +109,6 @@ void AppController::run()
 		// check for sorting done
 		if (sorterModel_->step(steps))
 		{
-			currTime = currTime;
 			fontView_->render("DONE!", 0.0f, height_ / 2.0f - 75.0f, 1.0f, timeFontColor);
 		}
 		else
