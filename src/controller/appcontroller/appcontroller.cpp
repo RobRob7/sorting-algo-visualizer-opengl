@@ -83,7 +83,7 @@ AppController::~AppController()
 void AppController::run()
 {
 	// number of steps per frame for animation
-	unsigned int steps = 100;
+	unsigned int steps = 50;
 	while (!glfwWindowShouldClose(window_))
 	{
 		// set color to display after clear (state-setting function)
@@ -150,9 +150,13 @@ void AppController::processInput()
 		sorterModel_->setSortingAlgorithm(std::make_unique<SelectionSort>());
 		algoText_ = "SELECTION SORT";
 	}
+	// press '4' key
 	if (glfwGetKey(window_, GLFW_KEY_4) == GLFW_PRESS)
 	{
-		std::cout << "#4\n";
+		glfwSetTime(0.0);
+		std::cout << "QUICK SORT\n";
+		sorterModel_->setSortingAlgorithm(std::make_unique<QuickSort>());
+		algoText_ = "QUICK SORT";
 	}
 	if (glfwGetKey(window_, GLFW_KEY_5) == GLFW_PRESS)
 	{
