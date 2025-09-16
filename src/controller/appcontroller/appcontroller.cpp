@@ -49,6 +49,8 @@ AppController::AppController(int width, int height, const char* windowTitle)
 				glViewport(0, 0, width, height);
 				if (self->fontView_)
 					self->fontView_->onResize(width, height);
+				if (self->sorterModel_)
+					self->sorterModel_->updateForResize(width, height);
 				if (self->sorterView_)
 					self->sorterView_->onResize(width, height);
 			}
@@ -91,7 +93,7 @@ void AppController::run()
 		// set color to display after clear (state-setting function)
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		// clear the screen colors (state-using function)
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT);
 
 		// process and handle input from user
 		processInput();

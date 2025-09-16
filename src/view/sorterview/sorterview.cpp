@@ -65,7 +65,4 @@ void SorterView::onResize(int width, int height)
 	// set new window sizes
 	windowWidth_ = width;
 	windowHeight_ = height;
-
-	// tell model to recompute sizes
-	const_cast<SorterModel&>(sorterModel_).updateForResize(width, height);
 } // end of onResize()
