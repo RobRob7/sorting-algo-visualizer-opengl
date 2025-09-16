@@ -11,11 +11,8 @@
 <img src="https://em-content.zobj.net/source/microsoft-teams/400/bar-chart_1f4ca.png" height="25" align="center">
 Preview
 </h2>
-<div style="display: flex; gap: 20px;">
-    <img src="./gif/bubble_sort.gif" height="240"/>
-    <img src="./gif/insertion_sort.gif" height="240"/>
-    <img src="./gif/selection_sort.gif" height="240"/>
-    <img src="./gif/quick_sort.gif" height="240"/>
+<div style="display: flex;">
+    <img src="./gif/quick_sort.gif" height="360"/>
 </div>
 
 <h2>
