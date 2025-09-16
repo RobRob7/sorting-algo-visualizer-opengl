@@ -158,8 +158,4 @@ void AppController::processInput()
 		sorterModel_->setSortingAlgorithm(std::make_unique<QuickSort>());
 		algoText_ = "QUICK SORT";
 	}
-	if (glfwGetKey(window_, GLFW_KEY_5) == GLFW_PRESS)
-	{
-		std::cout << "#5\n";
-	}
 } // end of processInput()
