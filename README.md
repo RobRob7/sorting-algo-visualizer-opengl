@@ -1,5 +1,22 @@
 # OpenGL Sorting Algorithm Visualizer
-Tool that provides a visualization of sorting algorithms using OpenGL 3.3 Core, C++17. For use with Windows only.
+- Tool that provides a visualization of sorting algorithms using OpenGL 3.3 Core, C++17. For use with Windows based machines.
+- Sorting Algorithms:
+  - Bubble Sort
+  - Insertion Sort
+  - Selection Sort
+  - Quick Sort
+- Maximize program window for optimal viewing.
+
+<h2>
+<img src="https://em-content.zobj.net/source/microsoft-teams/400/bar-chart_1f4ca.png" height="25" align="center">
+Preview
+</h2>
+<div style="display: flex; gap: 20px;">
+    <img src="./gif/bubble_sort.gif" height="240"/>
+    <img src="./gif/insertion_sort.gif" height="240"/>
+    <img src="./gif/selection_sort.gif" height="240"/>
+    <img src="./gif/quick_sort.gif" height="240"/>
+</div>
 
 <h2>
 <img src="https://lh4.googleusercontent.com/proxy/4_Zan5D7FOYcviw14ecpCpx8Tvq-ii1DoLIe15O2eDy9INbz2mhP-27Z3HCWby3EaQned-UF-1n4zFzbkSEFt9p7sOQUnsX-q_GyjI4C1-bSIVXTG0z0dugD" height="30" align="center">
@@ -57,13 +74,24 @@ Libraries already provided, the following are used:
 Project Structure
 </h2>
 
-This project follows the MVC design pattern. Project layout:
+This project follows the MVC design pattern. The model portion pertains to CPU side data like the sorting algorithm line positioning, and the custom font loader using FreeType. The view portion is strictly utilizing OpenGL to create and utilize shader programs, and setup VAO's and VBO's for rendering the lines and text on screen. The controller portion makes calls to model and view objects while also handling user inputs and window management. Project layout:
 - **src/**
   - **model/**
     - **fontmodel/** → Font rendering data
         - `fontmodel.h`
         - `fontmodel.cpp`
     - **sortermodel/** → Sorting algorithm rendering data
+        - **isortermodel/** → Pure abstract interface for sorter model
+          - `isortermodel.h`
+        - **sortingalgo/** → Sorting algorithms
+          - `bubblesort.h`
+          - `bubblesort.cpp`
+          - `insertionsort.h`
+          - `insertionsort.cpp`
+          - `selectionsort.h`
+          - `selectionsort.cpp`
+          - `quicksort.h`
+          - `quicksort.cpp`
         - `sortermodel.h`
         - `sortermodel.cpp`
   - **view/**
