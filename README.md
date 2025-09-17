@@ -45,13 +45,14 @@ cmake --build . --config Release
 <img src="https://cdn-icons-png.freepik.com/512/8964/8964273.png" height="30",align = "center">
 Run
 </h2>
-For Command Prompt:
+
+- For Command Prompt:
 
 ```
 cd Release
 algorithm-visualizer.exe
 ```
-For Git Bash:
+- For Git Bash:
 ```
 cd Release
 ./algorithm-visualizer.exe
