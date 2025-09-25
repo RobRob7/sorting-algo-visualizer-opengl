@@ -11,7 +11,7 @@ AppController::AppController(int width, int height, const char* windowTitle)
 	}
 
 	// specify major OpenGL version
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	// specify minor OpenGL version
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	// specify OpenGL core-profile
