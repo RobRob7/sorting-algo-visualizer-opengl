@@ -1,5 +1,5 @@
 # OpenGL Sorting Algorithm Visualizer
-- Tool that provides a visualization of sorting algorithms using OpenGL 3.3 Core, C++17. For use with Windows based machines.
+- Tool that provides a visualization of sorting algorithms using OpenGL 4.3 Core, C++17. For use with Windows based machines.
 - Sorting Algorithms:
   - Bubble Sort
   - Insertion Sort
