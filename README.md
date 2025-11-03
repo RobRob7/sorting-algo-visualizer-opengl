@@ -100,7 +100,7 @@ This project follows the MVC design pattern. The model portion pertains to CPU s
         - `sorterview.cpp`
     - **shader/** → Shader program creation
         - `shader.cpp`
-- **controller/**
+  - **controller/**
     - **appcontroller/** → Window control
       - `appcontroller.cpp`
 - **res/**
