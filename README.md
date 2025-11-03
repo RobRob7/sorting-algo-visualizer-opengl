@@ -22,7 +22,7 @@ Requirements
 
 > - [Download](https://visualstudio.microsoft.com/vs/community/) Visual Studio 2022 Community Edition.
 > -- Install workloads: *Desktop development with C++*.
-> - [Download](https://cmake.org/download/) and install CMake (>= v3.20).
+> - [Download](https://cmake.org/download/) and install CMake (>= v3.31.0).
 
 <h2>
 <img src="https://em-content.zobj.net/source/microsoft-teams/337/hammer-and-wrench_1f6e0-fe0f.png" height="30",align = "center">
