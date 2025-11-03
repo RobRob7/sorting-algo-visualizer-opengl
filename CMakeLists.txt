@@ -2,7 +2,7 @@
 #MODIFIED BY: ROBERT J. ARMENDARIZ
 
 # cmake minimum version req
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.31.0)
 
 # using MSVC compiler
 if(MSVC)
