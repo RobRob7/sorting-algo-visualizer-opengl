@@ -1,11 +1,11 @@
 # OpenGL Sorting Algorithm Visualizer
-- Tool that provides a visualization of sorting algorithms using OpenGL 4.3 Core, C++17. For use with Windows based machines.
+- Tool that provides a visualization of sorting algorithms using OpenGL 4.3 Core, C++17. For use with Windows.
 - Sorting Algorithms:
   - Bubble Sort
   - Insertion Sort
   - Selection Sort
   - Quick Sort
-- Maximize program window for optimal viewing.
+- Maximize application window for optimal viewing.
 
 <h2>
 <img src="https://em-content.zobj.net/source/microsoft-teams/400/bar-chart_1f4ca.png" height="25" align="center">
@@ -79,38 +79,28 @@ Project Structure
 </h2>
 
 This project follows the MVC design pattern. The model portion pertains to CPU side data like the sorting algorithm line positioning, and the custom font loader using FreeType. The view portion is strictly utilizing OpenGL to create and utilize shader programs, and setup VAO's and VBO's for rendering the lines and text on screen. The controller portion makes calls to model and view objects while also handling user inputs and window management. Project layout:
+- **include/**
+  - all my header files
 - **src/**
   - **model/**
     - **fontmodel/** → Font rendering data
-        - `fontmodel.h`
         - `fontmodel.cpp`
     - **sortermodel/** → Sorting algorithm rendering data
-        - **isortermodel/** → Pure abstract interface for sorter model
-          - `isortermodel.h`
         - **sortingalgo/** → Sorting algorithms
-          - `bubblesort.h`
           - `bubblesort.cpp`
-          - `insertionsort.h`
           - `insertionsort.cpp`
-          - `selectionsort.h`
           - `selectionsort.cpp`
-          - `quicksort.h`
           - `quicksort.cpp`
-        - `sortermodel.h`
         - `sortermodel.cpp`
   - **view/**
     - **fontview/** → Font rendering OpenGL
-        - `fontview.h`
         - `fontview.cpp`
     - **sorterview/** → Sorting algorithm rendering OpenGL
-        - `sorterview.h`
         - `sorterview.cpp`
     - **shader/** → Shader program creation
-        - `shader.h`
         - `shader.cpp`
 - **controller/**
     - **appcontroller/** → Window control
-      - `appcontroller.h`
       - `appcontroller.cpp`
 - **res/**
   - **font/** → Font for text rendering

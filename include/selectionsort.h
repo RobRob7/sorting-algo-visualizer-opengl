@@ -1,7 +1,7 @@
 #ifndef SELECTIONSORT_H
 #define SELECTIONSORT_H
 
-#include "../isortermodel/isortermodel.h"
+#include "isortermodel.h"
 
 class SelectionSort : public ISorterModel
 {

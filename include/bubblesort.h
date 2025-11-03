@@ -1,11 +1,9 @@
-#ifndef QUICKSORT_H
-#define QUICKSORT_H
+#ifndef BUBBLESORT_H
+#define BUBBLESORT_H
 
-#include "../isortermodel/isortermodel.h"
+#include "isortermodel.h"
 
-#include <vector>
-
-class QuickSort : public ISorterModel
+class BubbleSort : public ISorterModel
 {
 public:
     // set line values when algorithm set, begin anew
@@ -21,16 +19,8 @@ public:
 private:
     // value of lines
     std::vector<float>* vals_ = nullptr;
-    // stack of ranges
-    std::vector<std::pair<int, int>> stack_;
-    // current range
-    int lo_ = -1, hi_ = -1;
-    // pivot index
-    int pivot_ = -1;
     // algorithm step counters
-    size_t i_ = -1, j_ = -1;
-    // is partitioning bool
-    bool partitioning_ = false;
+    size_t i_ = 0, j_ = 0;
 };
 
 #endif

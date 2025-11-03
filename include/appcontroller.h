@@ -1,14 +1,14 @@
 #ifndef APPCONTROLLER_H
 #define APPCONTROLLER_H
 
-#include "../../model/fontmodel/fontmodel.h"
-#include "../../view/fontview/fontview.h"
-#include "../../model/sortermodel/sortermodel.h"
-#include "../../model/sortermodel/sortingalgo/bubblesort.h"
-#include "../../model/sortermodel/sortingalgo/insertionsort.h"
-#include "../../model/sortermodel/sortingalgo/selectionsort.h"
-#include "../../model/sortermodel/sortingalgo/quicksort.h"
-#include "../../view/sorterview/sorterview.h"
+#include "fontmodel.h"
+#include "fontview.h"
+#include "sortermodel.h"
+#include "bubblesort.h"
+#include "insertionsort.h"
+#include "selectionsort.h"
+#include "quicksort.h"
+#include "sorterview.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

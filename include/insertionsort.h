@@ -1,7 +1,7 @@
 #ifndef INSERTIONSORT_H
 #define INSERTIONSORT_H
 
-#include "../isortermodel/isortermodel.h"
+#include "isortermodel.h"
 
 class InsertionSort : public ISorterModel
 {

@@ -1,8 +1,8 @@
 #ifndef FONTVIEW_H
 #define FONTVIEW_H
 
-#include "../model/fontmodel/fontmodel.h"
-#include "../shader/shader.h"
+#include "fontmodel.h"
+#include "shader.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glad/glad.h>

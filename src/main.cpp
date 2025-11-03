@@ -1,4 +1,4 @@
-#include "controller/appcontroller/appcontroller.h"
+#include "appcontroller.h"
 
 // window settings
 unsigned int width = 1920;

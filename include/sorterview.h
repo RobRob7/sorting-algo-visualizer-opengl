@@ -1,8 +1,8 @@
 #ifndef SORTERVIEW_H
 #define SORTERVIEW_H
 
-#include "../model/sortermodel/sortermodel.h"
-#include "../shader/shader.h"
+#include "sortermodel.h"
+#include "shader.h"
 
 #include <glad/glad.h>
 #include <glm/gtc/matrix_transform.hpp>

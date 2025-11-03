@@ -1,7 +1,7 @@
 #ifndef SORTERMODEL_H
 #define SORTERMODEL_H
 
-#include "isortermodel/isortermodel.h"
+#include "isortermodel.h"
 
 #include <vector>
 #include <random>
