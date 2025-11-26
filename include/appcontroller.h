@@ -23,11 +23,9 @@ public:
 	AppController(int width, int height, const char* windowTitle);
 	~AppController();
 
-	// this function runs the application render loop
 	void run();
 
 private:
-	// this function processes and handles input from user
 	void processInput();
 private:
 	// width of window
@@ -39,14 +37,12 @@ private:
 	// GLFWwindow instance
 	GLFWwindow* window_ = nullptr;
 
-	// the font model
+	// the font
 	std::unique_ptr<FontModel> fontModel_;
-	// the font view
 	std::unique_ptr<FontView> fontView_;
 
-	// the sorter model
+	// the sorter
 	std::unique_ptr<SorterModel> sorterModel_;
-	// the sorter view
 	std::unique_ptr<SorterView> sorterView_;
 
 	// current time tracker
